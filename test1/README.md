@@ -80,7 +80,9 @@ VBO是顶点缓冲对象，全称是Vertex Buffer Object，他可以在CPU上存
 之后将之前定义的顶点坐标输入到顶点对象上
 >glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);<br>
 第四个参数是指定我们希望如何来管理给定的数据，由于现在较为初级，所以保证三角形的位置不变，当然，他还有其他的几个形式
->>GL_STATIC_DRAW ：数据不会或几乎不会改变。<br>GL_DYNAMIC_DRAW：数据会被改变很多。<br>GL_STREAM_DRAW ：数据每次绘制时都会改变。
+*GL_STATIC_DRAW ：数据不会或几乎不会改变。<br>
+*GL_DYNAMIC_DRAW：数据会被改变很多。<br>
+*GL_STREAM_DRAW ：数据每次绘制时都会改变。
 
 ## VAO
 VAO是顶点数组对象，VAO全名是Vertex Array Object，将随后的顶点属性绑定到VAO之上，在之后的绘制中只需要绑定相应的VAO就可以很方便的画图了，VAO的创建过程和VBO类似
@@ -100,9 +102,7 @@ glEnableVertexAttribArray(0);
 glBindBuffer(GL_ARRAY_BUFFER, 0);
 glBindVertexArray(0);
 ```
-第三步中的几个参数说明一下，第一个，想要配置的顶点编号，此处location=0，在core的文件中建立；第二个，顶点属性的大小，vec3；<br>
-第三个，数据类型float；第四个，是否规范化，此处false是因为已经规范化过了；<br>
-第五个，属性选择跨度，在建立坐标的时候是3X3的矩阵,所以每个顶点的跨度为3；第六个，起始偏移量为0。<br>
+第三步中的几个参数说明一下，第一个，想要配置的顶点编号，此处location=0，在core的文件中建立；第二个，顶点属性的大小，vec3；第三个，数据类型float；第四个，是否规范化，此处false是因为已经规范化过了；第五个，属性选择跨度，在建立坐标的时候是3X3的矩阵,所以每个顶点的跨度为3；第六个，起始偏移量为0。<br>
 下面那个参数0就是location=0中代表位置的0。
 
 
