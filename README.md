@@ -4,9 +4,9 @@
 ## 配置
 首先是关于OpenGL配置的问题，配置需要先下载GLEW和GLFW包，本人利用VS2017+GLEW+GLFW进行OpenGL的配置，具体步骤是按照[B站上是一个网站](https://www.bilibili.com/read/cv183332)进行配置，不过似乎有几个与我实际配置不一样的部分需要更改。<br>
 在第六步配置连接器包含的库文件指定，本人只指定了其中的三个如下，并且将GLEW/bin/release/win32中的文件glew32.dll复制到mian.cpp文件所在的目录下。<br>
->opengl32.lib
->glfw3.lib
->glew32.lib
+*opengl32.lib<br>
+>glfw3.lib<br>
+>glew32.lib<br>
 接下来的测试文件我是用老师给的一段测试代码
 ```cpp
 #include <iostream>
