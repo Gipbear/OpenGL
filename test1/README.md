@@ -79,7 +79,8 @@ VBO是顶点缓冲对象，全称是Vertex Buffer Object，他可以在CPU上存
 
 之后将之前定义的顶点坐标输入到顶点对象上
 >glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);<br>
-第四个参数是指定我们希望如何来管理给定的数据，由于现在较为初级，所以保证三角形的位置不变，当然，他还有其他的几个形式
+第四个参数是指定我们希望如何来管理给定的数据，由于现在较为初级，所以保证三角形的位置不变，当然，他还有其他的几个形式:
+
 *GL_STATIC_DRAW ：数据不会或几乎不会改变。<br>
 *GL_DYNAMIC_DRAW：数据会被改变很多。<br>
 *GL_STREAM_DRAW ：数据每次绘制时都会改变。
