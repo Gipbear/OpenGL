@@ -81,9 +81,9 @@ VBO是顶点缓冲对象，全称是Vertex Buffer Object，他可以在CPU上存
 >glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);<br>
 第四个参数是指定我们希望如何来管理给定的数据，由于现在较为初级，所以保证三角形的位置不变，当然，他还有其他的几个形式:
 
-*GL_STATIC_DRAW ：数据不会或几乎不会改变。<br>
-*GL_DYNAMIC_DRAW：数据会被改变很多。<br>
-*GL_STREAM_DRAW ：数据每次绘制时都会改变。
+* GL_STATIC_DRAW ：数据不会或几乎不会改变。
+* GL_DYNAMIC_DRAW：数据会被改变很多。
+* GL_STREAM_DRAW ：数据每次绘制时都会改变。
 
 ## VAO
 VAO是顶点数组对象，VAO全名是Vertex Array Object，将随后的顶点属性绑定到VAO之上，在之后的绘制中只需要绑定相应的VAO就可以很方便的画图了，VAO的创建过程和VBO类似
