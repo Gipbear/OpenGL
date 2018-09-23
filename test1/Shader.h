@@ -22,18 +22,18 @@ public:
 		fShaderFile.exceptions(std::ifstream::badbit);
 
 		try {
-			//´ò¿ªÎÄ¼ş
+			//æ‰“å¼€æ–‡ä»¶
 			vShaderFile.open(vertexPath);
 			fShaderFile.open(fragmentPath);
 
 			std::stringstream vShaderStream, fShaderStream;
-			//¶ÁÈ¡»º³åÄÚÈİµ½Êı¾İÁ÷
+			//è¯»å–ç¼“å†²å†…å®¹åˆ°æ•°æ®æµ
 			vShaderStream << vShaderFile.rdbuf();
 			fShaderStream << fShaderFile.rdbuf();
-			//¹Ø±ÕÎÄ¼ş´¦ÀíÆ÷
+			//å…³é—­æ–‡ä»¶å¤„ç†å™¨
 			vShaderFile.close();
 			fShaderFile.close();
-			//×ª»»Êı¾İÁ÷µ½string
+			//è½¬æ¢æ•°æ®æµåˆ°string
 			vertexCode = vShaderStream.str();
 			fragmentCode = fShaderStream.str();
 
@@ -41,14 +41,14 @@ public:
 		catch (std::ifstream::failure e) {
 			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
 		}
-		//ÀàĞÍ×ª»»
+		//ç±»å‹è½¬æ¢
 		const GLchar *vShaderCode = vertexCode.c_str();
 		const GLchar *fShaderCode = fragmentCode.c_str();
 
-		//´´½¨¶¥µã×ÅÉ«Æ÷¶ÔÏó
-		vertex = glCreateShader(GL_VERTEX_SHADER);			//·µ»ØÖµÊÇÕâ¸ö¶ÔÏóµÄÎ¨Ò»ID
-		glShaderSource(vertex, 1, &vShaderCode, NULL);		//½«Ô´Âë¸½¼Óµ½×ÅÉ«Æ÷¶ÔÏóÉÏ
-		glCompileShader(vertex);									//±àÒëÕâ¸ö×ÅÉ«Æ÷¶ÔÏó
+		//åˆ›å»ºé¡¶ç‚¹ç€è‰²å™¨å¯¹è±¡
+		vertex = glCreateShader(GL_VERTEX_SHADER);					//è¿”å›å€¼æ˜¯è¿™ä¸ªå¯¹è±¡çš„å”¯ä¸€ID
+		glShaderSource(vertex, 1, &vShaderCode, NULL);				//å°†æºç é™„åŠ åˆ°ç€è‰²å™¨å¯¹è±¡ä¸Š
+		glCompileShader(vertex);									//ç¼–è¯‘è¿™ä¸ªç€è‰²å™¨å¯¹è±¡
 
 		GLint success;
 		GLchar infoLog[512];
@@ -59,10 +59,10 @@ public:
 			std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
 		}
 
-		//´´½¨Æ¬Ôª×ÅÉ«Æ÷¶ÔÏó
-		fragment = glCreateShader(GL_FRAGMENT_SHADER);			//·µ»ØÖµÊÇÕâ¸ö¶ÔÏóµÄÎ¨Ò»ID
-		glShaderSource(fragment, 1, &fShaderCode, NULL);		//½«Ô´Âë¸½¼Óµ½×ÅÉ«Æ÷¶ÔÏóÉÏ
-		glCompileShader(fragment);									//±àÒë×ÅÉ«Æ÷¶ÔÏó
+		//åˆ›å»ºç‰‡å…ƒç€è‰²å™¨å¯¹è±¡
+		fragment = glCreateShader(GL_FRAGMENT_SHADER);				//è¿”å›å€¼æ˜¯è¿™ä¸ªå¯¹è±¡çš„å”¯ä¸€ID
+		glShaderSource(fragment, 1, &fShaderCode, NULL);			//å°†æºç é™„åŠ åˆ°ç€è‰²å™¨å¯¹è±¡ä¸Š
+		glCompileShader(fragment);									//ç¼–è¯‘ç€è‰²å™¨å¯¹è±¡
 
 		glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
 		if (!success) {
@@ -70,11 +70,11 @@ public:
 			std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
 		}
 
-		//Á´½Ó×ÅÉ«Æ÷
-		this->Program = glCreateProgram();			//´´½¨×ÅÉ«Æ÷³ÌĞò¶ÔÏó
-		glAttachShader(this->Program, vertex);		//½«¶¥µã×ÅÉ«Æ÷¸½¼Óµ½×ÅÉ«Æ÷³ÌĞòÉÏ
-		glAttachShader(this->Program, fragment);		//½«Æ¬Ôª×ÅÉ«Æ÷¸½¼Óµ½×ÅÉ«Æ÷³ÌĞòÉÏ
-		glLinkProgram(this->Program);						//Á´½Ó×ÅÉ«Æ÷³ÌĞò
+		//é“¾æ¥ç€è‰²å™¨
+		this->Program = glCreateProgram();					//åˆ›å»ºç€è‰²å™¨ç¨‹åºå¯¹è±¡
+		glAttachShader(this->Program, vertex);				//å°†é¡¶ç‚¹ç€è‰²å™¨é™„åŠ åˆ°ç€è‰²å™¨ç¨‹åºä¸Š
+		glAttachShader(this->Program, fragment);			//å°†ç‰‡å…ƒç€è‰²å™¨é™„åŠ åˆ°ç€è‰²å™¨ç¨‹åºä¸Š
+		glLinkProgram(this->Program);						//é“¾æ¥ç€è‰²å™¨ç¨‹åº
 
 		glValidateProgram(this->Program);
 		glGetProgramiv(this->Program, GL_LINK_STATUS, &success);
@@ -86,7 +86,7 @@ public:
 
 	~Shader() 
 	{
-		//ÇåÀí×ÅÉ«Æ÷
+		//æ¸…ç†ç€è‰²å™¨
 		glDetachShader(this->Program, vertex);
 		glDetachShader(this->Program, fragment);
 		glDeleteShader(vertex);
@@ -94,7 +94,7 @@ public:
 		glDeleteProgram(this->Program);
 	}
 
-	void  Use()			//Ê¹ÓÃ
+	void  Use()			//ä½¿ç”¨
 	{
 		glUseProgram(this->Program);
 	}
