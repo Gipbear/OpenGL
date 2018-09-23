@@ -10,7 +10,7 @@
 class Shader
 {
 	GLuint vertex, fragment;
-public:
+	public:
 	GLuint Program;
 	Shader(const GLchar *vertexPath, const GLchar *fragmentPath)
 	{
@@ -36,11 +36,11 @@ public:
 			//转换数据流到string
 			vertexCode = vShaderStream.str();
 			fragmentCode = fShaderStream.str();
-
 		}
 		catch (std::ifstream::failure e) {
 			std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
 		}
+		
 		//类型转换
 		const GLchar *vShaderCode = vertexCode.c_str();
 		const GLchar *fShaderCode = fragmentCode.c_str();
