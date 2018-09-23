@@ -46,9 +46,9 @@ class Shader
 		const GLchar *fShaderCode = fragmentCode.c_str();
 
 		//创建顶点着色器对象
-		vertex = glCreateShader(GL_VERTEX_SHADER);					//返回值是这个对象的唯一ID
+		vertex = glCreateShader(GL_VERTEX_SHADER);				//返回值是这个对象的唯一ID
 		glShaderSource(vertex, 1, &vShaderCode, NULL);				//将源码附加到着色器对象上
-		glCompileShader(vertex);									//编译这个着色器对象
+		glCompileShader(vertex);						//编译这个着色器对象
 
 		GLint success;
 		GLchar infoLog[512];
@@ -62,7 +62,7 @@ class Shader
 		//创建片元着色器对象
 		fragment = glCreateShader(GL_FRAGMENT_SHADER);				//返回值是这个对象的唯一ID
 		glShaderSource(fragment, 1, &fShaderCode, NULL);			//将源码附加到着色器对象上
-		glCompileShader(fragment);									//编译着色器对象
+		glCompileShader(fragment);						//编译着色器对象
 
 		glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
 		if (!success) {
@@ -71,10 +71,10 @@ class Shader
 		}
 
 		//链接着色器
-		this->Program = glCreateProgram();					//创建着色器程序对象
+		this->Program = glCreateProgram();				//创建着色器程序对象
 		glAttachShader(this->Program, vertex);				//将顶点着色器附加到着色器程序上
 		glAttachShader(this->Program, fragment);			//将片元着色器附加到着色器程序上
-		glLinkProgram(this->Program);						//链接着色器程序
+		glLinkProgram(this->Program);					//链接着色器程序
 
 		glValidateProgram(this->Program);
 		glGetProgramiv(this->Program, GL_LINK_STATUS, &success);
