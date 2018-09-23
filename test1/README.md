@@ -157,7 +157,33 @@ if (!success) {
 	std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
 }
 ```
-以上的具体操作总(da)结(gai)来说就是，利用glCreateShader创建对象，然后用glShaderSource将之前读取的文件源码
+以上的具体操作总(da)结(gai)来说就是，利用glCreateShader创建对象，然后用glShaderSource将之前读取的文件源码附加到创建的着色器对象上，最后用glCompileShader来编译着色器对象。建立编译结束做着色器对象之后可能会有点不放心，而且也经常会在这里出错（可能还是个新手的原因），所以需要检查一下是否编译成功，利用标志success和错误说明字符串infolog来显示错误情况，顶点着色器和片段着色器类似。在这之后就将两个着色器都和着色器程序对象链接起来。
+```cpp
+//链接着色器
+this->Program = glCreateProgram();		//创建着色器程序对象
+glAttachShader(this->Program, vertex);		//将顶点着色器附加到着色器程序上
+glAttachShader(this->Program, fragment);	//将片元着色器附加到着色器程序上
+glLinkProgram(this->Program);			//链接着色器程序
+
+glValidateProgram(this->Program);
+```
+至此，Shader类的构造函数就完成了，当然，有构造函数就需要析构函数，来将运行结束不需要的东西进行回收
+```cpp
+~Shader() 
+{
+	//清理着色器
+	glDetachShader(this->Program, vertex);
+	glDetachShader(this->Program, fragment);
+	glDeleteShader(vertex);
+	glDeleteShader(fragment);
+	glDeleteProgram(this->Program);
+}
+```
+最后还需要有一个函数来提供接口使用
+>void  Use()			//使用
+	{
+		glUseProgram(this->Program);
+	}
 
 
 ## 循环渲染
