@@ -132,6 +132,16 @@ glBindVertexArray(0);
 
 ## Shader.h
 关于着色器对象的创建编译等步骤，将其放入.h文件中编写（实际上是老师后来又从main（）文件中拿出来的），这里面主要是处理着色器对象
+首先是头文件的编写，需要的是关于文件读写的包
+```cpp
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <GL/glew.h>
+```
+之后定义一个Shader类来表示着色器类，以供生成着色器对象，在Shader类的定义中，首先声明变量，顶点着色器和片段着色器，还有着色器程序。在Shader的构造函数中，需要传入的参数就是顶点着色器和片段着色器的文件地址，就是之前创建的.vs和.frag文件
+> Shader(const GLchar *vertexPath, const GLchar *fragmentPath);
 
 
 ## 循环渲染
