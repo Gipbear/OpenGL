@@ -143,6 +143,22 @@ glBindVertexArray(0);
 之后定义一个Shader类来表示着色器类，以供生成着色器对象，在Shader类的定义中，首先声明变量，顶点着色器和片段着色器，还有着色器程序。在Shader的构造函数中，需要传入的参数就是顶点着色器和片段着色器的文件地址，就是之前创建的.vs和.frag文件
 > Shader(const GLchar *vertexPath, const GLchar *fragmentPath);
 
+之后就是简单的读取文件内容，将文件格式转化为字符串格式，再转化为字符形式（虽然觉得字符串格式已经很好，但是后面用到取地址的方式，似乎还是字符数组比较合适）。读完文件之后就应该进行对着色器对象的创建了
+```cpp
+//创建顶点着色器对象
+vertex = glCreateShader(GL_VERTEX_SHADER);			//返回值是这个对象的唯一ID
+glShaderSource(vertex, 1, &vShaderCode, NULL);		//将源码附加到着色器对象上
+glCompileShader(vertex);							//编译这个着色器对象
+GLint success;
+GLchar infoLog[512];
+glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
+if (!success) {
+	glGetShaderInfoLog(vertex, 512, NULL, infoLog);
+	std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+}
+```
+以上的具体操作总(da)结(gai)来说就是，利用glCreateShader创建对象，然后用glShaderSource将之前读取的文件源码
+
 
 ## 循环渲染
 对于渲染的操作，我们都要将其进行循环，因为我们并不希望将图像画出来之后就会被立刻关闭，我们需要的是不断的绘制图形，保证其能够在窗口显示。
