@@ -188,6 +188,11 @@ glValidateProgram(this->Program);
 		glUseProgram(this->Program); <br>
 	} <br>
 
+## 调用Shader.h
+定义完Shader.h的头文件之后，当然需要调用啦，首先将头文件导入main.cpp中
+> #include "Shader.h"
+
+然后创建一个Shader对象ourShader来构造Shader着色器对象，以供之后使用，其中传入的文件路径千万不要弄错了，关于在当前目录还是子目录的情况要自己分清楚，不然调用文件不成功还是会有各种各样奇奇怪怪的错误的。
 
 ## 循环渲染
 对于渲染的操作，我们都要将其进行循环，因为我们并不希望将图像画出来之后就会被立刻关闭，我们需要的是不断的绘制图形，保证其能够在窗口显示。
