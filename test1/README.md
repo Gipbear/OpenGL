@@ -1,3 +1,6 @@
+# 每天起床第一句！先给自己打个气！
+## 加油！加油！加油！
+
 # 三角形的诞生
 第一节首先是创建一个三角形，那么如何来实现三角形的创建呢，就让我们一起开始学习吧！！
 
@@ -180,10 +183,10 @@ glValidateProgram(this->Program);
 }
 ```
 最后还需要有一个函数来提供接口使用
->void  Use()			//使用
-	{
-		glUseProgram(this->Program);
-	}
+>void  Use()			//使用 <br>
+	{ <br>
+		glUseProgram(this->Program); <br>
+	} <br>
 
 
 ## 循环渲染
@@ -204,7 +207,7 @@ while (!glfwWindowShouldClose(window))			//检查是否关闭窗口
 	glfwSwapBuffers(window);					//将显示缓存和离屏缓存交换（显示高屏缓存中的内容）
 }
 ```
-其中的glfwWindowShouldClose是来检查GLFW创建的窗口是否有被要求退出；glfwPollEvents检查是否有鼠标等操作事件，然后决定是否需要调用其他对应函数；glClearColor()是设置对应的清屏颜色，当调用glClear是时候就会将屏幕清屏成相应的颜色；      glfwSwapBuffers是交换颜色缓冲，使得每次重新渲染显得真实。
+其中的glfwWindowShouldClose是来检查GLFW创建的窗口是否有被要求退出；glfwPollEvents检查是否有鼠标等操作事件，然后决定是否需要调用其他对应函数；glClearColor()是设置对应的清屏颜色，当调用glClear是时候就会将屏幕清屏成相应的颜色；调用之前在Shader中定义的函数接口Use()来使用着色器；将定义好的VAO顶点数组对象进行绑定；glDrawArrays顾名思义就是按照数组对象进行绘制图形；glfwSwapBuffers是交换颜色缓冲，使得每次重新渲染显得真实。
 
 ## 最后
 当绘制结束之后将之前所有的资源全都进行释放，并终止进程。
@@ -214,4 +217,7 @@ glDeleteBuffers(1, &VBO);
 glfwTerminate();			//终止进程
 return 0;
 ```
+
+# 完工！
+最后就可以看见一个美腻的三角形啦，虽然大概叙述了整个编写的过程，但是还是有很多地方表达不够清晰，或者我自己都没有完全理解，不过没关系，我们有在之前提到的OpenGL一份完整的教程，不懂的地方去翻一下还是可以轻松解决问题的，小白白我也会在后期的课程中不断改进，修正错误不断更新的！
 
