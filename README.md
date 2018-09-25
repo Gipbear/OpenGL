@@ -12,8 +12,8 @@
 ```cpp
 #include <iostream>
 //GLEW
-#define GLEW_STATIC
 #include <GL/glew.h>
+#define GLEW_STATIC
 //GLFW
 #include <GLFW/glfw3.h>
 const GLint WIDTH = 800, HEIGHT = 600;
