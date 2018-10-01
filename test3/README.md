@@ -31,17 +31,10 @@ glBindTexture(GL_TEXTURE_2D, texture);	//绑定
 纹理的坐标一般的在0到1.0之间的，若是超过了这个范围，则会使得纹理的映射并不是整个图像的大小，以后我们可能只会需要所给纹理的一部分，那么纹理的坐标就会在0到1之内，而纹理坐标一旦超过了这个范围，OpenGL则会默认重复复制这个纹理图像，但是OpenGL给了更多的选项
 
 环绕方式|描述
--|-:
+-|:-
 GL_REPEAT|对纹理的默认行为，重复纹理图像
 GL_MIRRORED_REPEAT|和GL_REPEAT一样，但每次重复图片都是镜像放置的
 GL_CLAMP_TO_EDGE|纹理坐标会被约束在0到1之间，超出部分会重复纹理坐标的边缘，产生一种边缘被拉伸的效果
 GL_CLAMP_TO_BORDER|超出的坐标为用户指定的边缘颜色
 
-| 水果        | 价格    |  数量  |
-| --------   | -----:   | :----: |
-| 香蕉        | $1      |   5    |
-| 苹果        | $1      |   6    |
-| 草莓        | $1      |   7    |
-
-
-
+https://learnopengl-cn.readthedocs.io/zh/latest/img/01/06/texture_wrapping.png
