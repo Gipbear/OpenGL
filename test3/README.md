@@ -37,4 +37,4 @@ GL_MIRRORED_REPEAT|和GL_REPEAT一样，但每次重复图片都是镜像放置�
 GL_CLAMP_TO_EDGE|纹理坐标会被约束在0到1之间，超出部分会重复纹理坐标的边缘，产生一种边缘被拉伸的效果
 GL_CLAMP_TO_BORDER|超出的坐标为用户指定的边缘颜色
 
-https://learnopengl-cn.readthedocs.io/zh/latest/img/01/06/texture_wrapping.png
+![find image](https://learnopengl-cn.readthedocs.io/zh/latest/img/01/06/texture_wrapping.png)
