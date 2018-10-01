@@ -20,4 +20,21 @@ GLfloat vertices[] = {
 那么接下来先绘制长方形，关于VAO和VBO那部分和之前画三角形的类似，这里我们要多一个EBO，EBO也是一个缓冲，用来存储索引
 
 ## 生成纹理
+首先定义一个纹理对象并激活绑定，
+```cpp
+GLuint texture;
+glGenTextures(1, &texture);				//绑定纹理之前先激活纹理单元
+glBindTexture(GL_TEXTURE_2D, texture);	//绑定
+````
+接下来就是选择纹理的一些设置了，关于纹理的设置有以下几种：
+### 纹理环绕方式
+纹理的坐标一般的在0~1.0之间的，若是超过了这个范围，则会使得纹理的映射并不是整个图像的大小，以后我们可能只会需要所给纹理的一部分，那么纹理的坐标就会在0~1之内，而纹理坐标一旦超过了这个范围，OpenGL则会默认重复复制这个纹理图像，但是OpenGL给了更多的选项
+|环绕方式			|描述|																			|
+|GL_REPEAT			|对纹理的默认行为，重复纹理图像													|
+|GL_MIRRORED_REPEAT	|和GL_REPEAT一样，但每次重复图片都是镜像放置的									  |
+|GL_CLAMP_TO_EDGE	|纹理坐标会被约束在0到1之间，超出部分会重复纹理坐标的边缘，产生一种边缘被拉伸的效果		|
+|GL_CLAMP_TO_BORDER	|超出的坐标为用户指定的边缘颜色													|
+
+![Image text](https://raw.github.com/yourName/repositpry/master/yourprojectName/img-folder/test.jpg)
+
 
